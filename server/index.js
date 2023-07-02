@@ -6,10 +6,12 @@ const models = require('./models/models')
 const cors = require("cors")
 const PORT = process.env.PORT || 5000
 const router = require("./routes/index")
+const fileUpload = require("express-fileupload")
 const errorHandler = require("./middleware/errorHandlingMiddleware")
 
 app.use(cors())
 app.use(express.json())
+app.use(fileUpload({}))
 app.use("/api", router)
 
 app.use(errorHandler)
